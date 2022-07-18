@@ -13,20 +13,19 @@ const userModel = new mongoose_1.default.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
-        type: String,
-        required: true
-    },
-    confirmPassword: {
         type: String,
         required: true
     }
 });
 userModel.methods.generateAuthToken = function () {
     const token = (0, jsonwebtoken_1.sign)({ _id: this._id }, process.env.jwtPrivateKey, { expiresIn: process.env.expiresAt });
-    return token;
+    return {
+        token: token
+    };
 };
 const User = mongoose_1.default.model('User', userModel);
 exports.default = User;
