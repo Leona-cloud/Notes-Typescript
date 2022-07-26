@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
-function auth(req, res, next) {
+const Auth = function auth(req, res, next) {
     const token = req.header('Bearer');
     if (!token) {
         return res.status(400).json({
@@ -50,4 +50,5 @@ function auth(req, res, next) {
             message: "Invalid token"
         });
     }
-}
+};
+exports.default = Auth;

@@ -1,7 +1,8 @@
 import express, {Request, Response} from 'express';
 import  mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-import AuthRouter from './routes/auth'
+import AuthRouter from './routes/auth';
+import NoteRouter from './routes/notes';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.urlencoded({extended: true}));
 
 //routes
 app.use('/api/auth', AuthRouter);
+app.use('/api/notes', NoteRouter);
 
 
 // connect to db

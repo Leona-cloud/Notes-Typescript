@@ -4,7 +4,7 @@ import {Request, Response, NextFunction} from 'express';
 
 dotenv.config();
 
-function auth(req: Request, res: Response, next: NextFunction){
+const Auth = function auth(req: Request, res: Response, next: NextFunction){
     const token = req.header('Bearer');
     if(!token){
         return res.status(400).json({
@@ -24,4 +24,6 @@ function auth(req: Request, res: Response, next: NextFunction){
             message: "Invalid token"
         });
     }
-}
+};
+
+export default Auth;

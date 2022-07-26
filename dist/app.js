@@ -30,10 +30,12 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv = __importStar(require("dotenv"));
 const auth_1 = __importDefault(require("./routes/auth"));
+const notes_1 = __importDefault(require("./routes/notes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use('/api/auth', auth_1.default);
+app.use('/api/notes', notes_1.default);
 dotenv.config();
 mongoose_1.default.connect(process.env.DB_CONNECT)
     .then(() => console.log("connected to db" + '' + `${process.env.DB_CONNECT}`))
